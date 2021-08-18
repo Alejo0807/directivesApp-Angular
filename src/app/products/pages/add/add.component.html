@@ -1,0 +1,63 @@
+
+
+<h1 class="mt-3">Agregar producto</h1>
+<hr>
+
+<form [formGroup]="myForm">
+
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+            <label class="col-form-label">Nombre:</label>
+        </div>
+        
+        <div class="col-auto">
+            <input type="text"
+                    class="form-control"
+                    formControlName="name">
+        </div>
+
+        <div class="col-auto">
+            <span error-msg
+                  [msg]="text1"
+                  [color]="color"
+                  [valid]="hasError('name')">
+            </span>
+        </div>
+
+
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <button class="btn btn-primary"
+                    (click)="changeMsg()">
+                Guardar
+            </button>
+
+            &nbsp;
+            <button class="btn btn-secondary"
+                    (click)="changeColor()">
+                Guardar
+            </button>
+        </div>
+        
+    </div>
+
+</form>
+
+<h5></h5>
+<pre>{{ myForm.valid | json }}</pre>
+<pre>{{ myForm.errors | json }}</pre>
+
+<div class="row mt-5" 
+    customIf
+    *ngIf="!hasError('name')">
+    <div class="col">
+        <div class="alert alert-primary">
+            Todo OK!
+        </div>
+    </div>
+</div>
+
+
+
